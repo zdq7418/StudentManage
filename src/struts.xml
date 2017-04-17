@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
+	<constant name="struts.multipart.maxSize" value="12582912" />
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.convention.package.locators" value="controller" />
+
+	<package name="default" extends="struts-default" namespace="/">
+		<action name="base_*" class="baseAction" method="{1}">
+			<result name="s">/index.jsp</result>
+		</action>
+		<action name="android_*" class="baseActionAndroid" method="{1}">
+			
+		</action>
+	</package>
+	
+</struts>    
