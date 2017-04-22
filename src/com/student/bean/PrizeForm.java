@@ -8,6 +8,7 @@ public class PrizeForm implements java.io.Serializable {
 
 	// Fields
 
+	private Integer prizeId;
 	private String prizeName;
 	private String prizeRem;
 
@@ -18,11 +19,20 @@ public class PrizeForm implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public PrizeForm(String prizeRem) {
+	public PrizeForm(String prizeName, String prizeRem) {
+		this.prizeName = prizeName;
 		this.prizeRem = prizeRem;
 	}
 
 	// Property accessors
+
+	public Integer getPrizeId() {
+		return this.prizeId;
+	}
+
+	public void setPrizeId(Integer prizeId) {
+		this.prizeId = prizeId;
+	}
 
 	public String getPrizeName() {
 		return this.prizeName;

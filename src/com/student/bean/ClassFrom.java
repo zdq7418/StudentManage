@@ -1,77 +1,74 @@
 package com.student.bean;
 
-
-
 /**
  * ClassFrom entity. @author MyEclipse Persistence Tools
  */
 
-public class ClassFrom  implements java.io.Serializable {
+public class ClassFrom implements java.io.Serializable {
 
+	// Fields
 
-    // Fields    
+	private Integer classNo;
+	private String className;
+	private String classTeacher;
+	private String classRemarks;
+	private Integer teacherId;
 
-     private Integer classNo;
-     private String className;
-     private String classTeacher;
-     private String classRemarks;
+	// Constructors
 
+	/** default constructor */
+	public ClassFrom() {
+	}
 
-    // Constructors
+	/** full constructor */
+	public ClassFrom(String className, String classTeacher,
+			String classRemarks, Integer teacherId) {
+		this.className = className;
+		this.classTeacher = classTeacher;
+		this.classRemarks = classRemarks;
+		this.teacherId = teacherId;
+	}
 
-    /** default constructor */
-    public ClassFrom() {
-    }
+	// Property accessors
 
-    
-    /** full constructor */
-    public ClassFrom(String className, String classTeacher, String classRemarks) {
-        this.className = className;
-        this.classTeacher = classTeacher;
-        this.classRemarks = classRemarks;
-    }
+	public Integer getClassNo() {
+		return this.classNo;
+	}
 
-   
-    // Property accessors
+	public void setClassNo(Integer classNo) {
+		this.classNo = classNo;
+	}
 
-    public Integer getClassNo() {
-        return this.classNo;
-    }
-    
-    public void setClassNo(Integer classNo) {
-        this.classNo = classNo;
-    }
+	public String getClassName() {
+		return this.className;
+	}
 
-    public String getClassName() {
-        return this.className;
-    }
-    
-    public void setClassName(String className) {
-        this.className = className;
-    }
+	public void setClassName(String className) {
+		this.className = className;
+	}
 
-    public String getClassTeacher() {
-        return this.classTeacher;
-    }
-    
-    public void setClassTeacher(String classTeacher) {
-        this.classTeacher = classTeacher;
-    }
+	public String getClassTeacher() {
+		return this.classTeacher;
+	}
 
-    public String getClassRemarks() {
-        return this.classRemarks;
-    }
-    
-    public void setClassRemarks(String classRemarks) {
-        this.classRemarks = classRemarks;
-    }
-   
+	public void setClassTeacher(String classTeacher) {
+		this.classTeacher = classTeacher;
+	}
 
+	public String getClassRemarks() {
+		return this.classRemarks;
+	}
 
+	public void setClassRemarks(String classRemarks) {
+		this.classRemarks = classRemarks;
+	}
 
+	public Integer getTeacherId() {
+		return this.teacherId;
+	}
 
-
-
-
+	public void setTeacherId(Integer teacherId) {
+		this.teacherId = teacherId;
+	}
 
 }

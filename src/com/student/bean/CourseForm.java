@@ -8,6 +8,7 @@ public class CourseForm implements java.io.Serializable {
 
 	// Fields
 
+	private Integer courseId;
 	private String courseName;
 	private String courseRem;
 
@@ -18,11 +19,20 @@ public class CourseForm implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public CourseForm(String courseRem) {
+	public CourseForm(String courseName, String courseRem) {
+		this.courseName = courseName;
 		this.courseRem = courseRem;
 	}
 
 	// Property accessors
+
+	public Integer getCourseId() {
+		return this.courseId;
+	}
+
+	public void setCourseId(Integer courseId) {
+		this.courseId = courseId;
+	}
 
 	public String getCourseName() {
 		return this.courseName;

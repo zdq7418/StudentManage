@@ -19,6 +19,8 @@ public class StudentForm implements java.io.Serializable {
 	private Timestamp studentEsd;
 	private String studentAdd;
 	private String studentRem;
+	private String studentAccout;
+	private String studentUrlimage;
 
 	// Constructors
 
@@ -29,7 +31,8 @@ public class StudentForm implements java.io.Serializable {
 	/** full constructor */
 	public StudentForm(String studentName, String studentSex,
 			Timestamp studentBir, String studentCla, String studentTel,
-			Timestamp studentEsd, String studentAdd, String studentRem) {
+			Timestamp studentEsd, String studentAdd, String studentRem,
+			String studentAccout, String studentUrlimage) {
 		this.studentName = studentName;
 		this.studentSex = studentSex;
 		this.studentBir = studentBir;
@@ -38,6 +41,8 @@ public class StudentForm implements java.io.Serializable {
 		this.studentEsd = studentEsd;
 		this.studentAdd = studentAdd;
 		this.studentRem = studentRem;
+		this.studentAccout = studentAccout;
+		this.studentUrlimage = studentUrlimage;
 	}
 
 	// Property accessors
@@ -112,6 +117,22 @@ public class StudentForm implements java.io.Serializable {
 
 	public void setStudentRem(String studentRem) {
 		this.studentRem = studentRem;
+	}
+
+	public String getStudentAccout() {
+		return this.studentAccout;
+	}
+
+	public void setStudentAccout(String studentAccout) {
+		this.studentAccout = studentAccout;
+	}
+
+	public String getStudentUrlimage() {
+		return this.studentUrlimage;
+	}
+
+	public void setStudentUrlimage(String studentUrlimage) {
+		this.studentUrlimage = studentUrlimage;
 	}
 
 }

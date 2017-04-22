@@ -34,5 +34,11 @@
         <property name="studentRem" type="java.lang.String">
             <column name="student_Rem" length="100" />
         </property>
+        <property name="studentAccout" type="java.lang.String">
+            <column name="student_Accout" length="20" />
+        </property>
+        <property name="studentUrlimage" type="java.lang.String">
+            <column name="student_Urlimage" length="50" />
+        </property>
     </class>
 </hibernate-mapping>

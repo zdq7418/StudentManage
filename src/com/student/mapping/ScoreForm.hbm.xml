@@ -7,7 +7,7 @@
 <hibernate-mapping>
     <class name="com.student.bean.ScoreForm" table="score_form" catalog="db_student">
         <id name="scoreNo" type="java.lang.String">
-            <column name="score_NO" length="14" />
+            <column name="score_No" length="14" />
             <generator class="native" />
         </id>
         <property name="scorePer" type="java.lang.String">
@@ -24,6 +24,9 @@
         </property>
         <property name="scoreSco" type="java.lang.Double">
             <column name="score_Sco" precision="22" scale="0" />
+        </property>
+        <property name="studentNo" type="java.lang.String">
+            <column name="student_No" length="20" />
         </property>
     </class>
 </hibernate-mapping>

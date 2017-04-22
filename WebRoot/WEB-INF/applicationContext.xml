@@ -41,8 +41,12 @@
 				<value>com/student/mapping/UserForm.hbm.xml</value>
 				<value>com/student/mapping/UserGroup.hbm.xml</value>
 				<value>com/student/mapping/UserMenu.hbm.xml</value>
-				<value>com/student/mapping/UserRome.hbm.xml</value></list>
-		</property></bean>
+				<value>com/student/mapping/UserRome.hbm.xml</value>
+				<value>com/student/mapping/TeacherForm.hbm.xml</value>
+				<value>com/student/mapping/UserRole.hbm.xml</value>
+		  </list>
+		</property>
+	 </bean>
 	
 	<bean id="baseDao" class="com.student.dao.impl.BaseDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />

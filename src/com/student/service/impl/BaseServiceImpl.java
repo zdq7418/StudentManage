@@ -3,6 +3,7 @@ package com.student.service.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import com.student.bean.UserForm;
 import com.student.dao.BaseDao;
 import com.student.service.BaseService;
 
@@ -68,6 +69,11 @@ public class BaseServiceImpl<T, PK extends Serializable> implements BaseService<
 			Object value2, int type) {
 		// TODO Auto-generated method stub
 		return baseDao.findByTwoProperty(entityClass, propertyName1, value1, propertyName2, value2, type);
+	}
+//用户登录 
+	public UserForm userFormLogin(UserForm userForm) {
+		
+		return null;
 	}
 
 

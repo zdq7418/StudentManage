@@ -14,6 +14,7 @@ public class ScoreForm implements java.io.Serializable {
 	private String scoreStu;
 	private String scoreCou;
 	private Double scoreSco;
+	private String studentNo;
 
 	// Constructors
 
@@ -23,12 +24,13 @@ public class ScoreForm implements java.io.Serializable {
 
 	/** full constructor */
 	public ScoreForm(String scorePer, String scoreCls, String scoreStu,
-			String scoreCou, Double scoreSco) {
+			String scoreCou, Double scoreSco, String studentNo) {
 		this.scorePer = scorePer;
 		this.scoreCls = scoreCls;
 		this.scoreStu = scoreStu;
 		this.scoreCou = scoreCou;
 		this.scoreSco = scoreSco;
+		this.studentNo = studentNo;
 	}
 
 	// Property accessors
@@ -79,6 +81,14 @@ public class ScoreForm implements java.io.Serializable {
 
 	public void setScoreSco(Double scoreSco) {
 		this.scoreSco = scoreSco;
+	}
+
+	public String getStudentNo() {
+		return this.studentNo;
+	}
+
+	public void setStudentNo(String studentNo) {
+		this.studentNo = studentNo;
 	}
 
 }

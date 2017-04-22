@@ -8,8 +8,9 @@ public class ClassCour implements java.io.Serializable {
 
 	// Fields
 
+	private Integer classId;
 	private Integer classNo;
-	private String className;
+	private Integer courseId;
 
 	// Constructors
 
@@ -18,11 +19,20 @@ public class ClassCour implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public ClassCour(String className) {
-		this.className = className;
+	public ClassCour(Integer classNo, Integer courseId) {
+		this.classNo = classNo;
+		this.courseId = courseId;
 	}
 
 	// Property accessors
+
+	public Integer getClassId() {
+		return this.classId;
+	}
+
+	public void setClassId(Integer classId) {
+		this.classId = classId;
+	}
 
 	public Integer getClassNo() {
 		return this.classNo;
@@ -32,12 +42,12 @@ public class ClassCour implements java.io.Serializable {
 		this.classNo = classNo;
 	}
 
-	public String getClassName() {
-		return this.className;
+	public Integer getCourseId() {
+		return this.courseId;
 	}
 
-	public void setClassName(String className) {
-		this.className = className;
+	public void setCourseId(Integer courseId) {
+		this.courseId = courseId;
 	}
 
 }

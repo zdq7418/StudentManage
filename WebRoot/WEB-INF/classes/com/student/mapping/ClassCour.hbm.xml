@@ -6,12 +6,15 @@
 -->
 <hibernate-mapping>
     <class name="com.student.bean.ClassCour" table="class_cour" catalog="db_student">
-        <id name="classNo" type="java.lang.Integer">
-            <column name="class_NO" />
+        <id name="classId" type="java.lang.Integer">
+            <column name="Class_Id" />
             <generator class="native" />
         </id>
-        <property name="className" type="java.lang.String">
-            <column name="class_Name" length="50" />
+        <property name="classNo" type="java.lang.Integer">
+            <column name="Class_No" />
+        </property>
+        <property name="courseId" type="java.lang.Integer">
+            <column name="Course_Id" />
         </property>
     </class>
 </hibernate-mapping>
