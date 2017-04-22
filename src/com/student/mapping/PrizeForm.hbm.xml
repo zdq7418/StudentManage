@@ -6,10 +6,13 @@
 -->
 <hibernate-mapping>
     <class name="com.student.bean.PrizeForm" table="prize_form" catalog="db_student">
-        <id name="prizeName" type="java.lang.String">
-            <column name="Prize_Name" length="20" />
+        <id name="prizeId" type="java.lang.Integer">
+            <column name="Prize_Id" />
             <generator class="native" />
         </id>
+        <property name="prizeName" type="java.lang.String">
+            <column name="Prize_Name" length="20" />
+        </property>
         <property name="prizeRem" type="java.lang.String">
             <column name="Prize_Rem" length="100" />
         </property>

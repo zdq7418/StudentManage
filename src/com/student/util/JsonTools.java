@@ -30,7 +30,7 @@ public class JsonTools {
 		List list=new ArrayList();
 		map.put("list", 1+"");
 		list.add(map);
-		ClassFrom classFrom=new ClassFrom("sss", "aada", "ddd");
+		ClassFrom classFrom=new ClassFrom("sss", "aada", "ddd", null);
 		String a=JsonTools.createJsonString(map);
 		String b=JsonTools.createJsonString(list);
 		String c=JsonTools.createJsonString(classFrom);

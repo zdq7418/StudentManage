@@ -11,18 +11,22 @@ import org.apache.struts2.StrutsStatics;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.student.bean.ClassFrom;
+import com.student.bean.UserForm;
 import com.student.service.BaseService;
 import com.student.util.JsonTools;
 
 public class BaseAction extends ActionSupport {
+	/**
+	 * 序号
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private BaseService baseService;
 	
 	private PrintWriter w = getPrintWriter();
 
 
-	public void setBaseService(BaseService baseService) {
-		this.baseService = baseService;
-	}
+	
 	
 	public String findAll(){
 		List<ClassFrom> list=baseService.findAll(ClassFrom.class);
@@ -44,5 +48,18 @@ public class BaseAction extends ActionSupport {
 		}
 		return w;
 	}
+	
+/*get/set方法*/
+	
 
+	public BaseService getBaseService() {
+		return baseService;
+	}
+	public void setBaseService(BaseService baseService) {
+		this.baseService = baseService;
+	}
+
+
+	
+	
 }

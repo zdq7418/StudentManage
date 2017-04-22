@@ -19,5 +19,8 @@
         <property name="classRemarks" type="java.lang.String">
             <column name="Class_Remarks" length="100" />
         </property>
+        <property name="teacherId" type="java.lang.Integer">
+            <column name="Teacher_Id" />
+        </property>
     </class>
 </hibernate-mapping>

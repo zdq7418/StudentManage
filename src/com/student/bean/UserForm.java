@@ -2,167 +2,157 @@ package com.student.bean;
 
 import java.sql.Timestamp;
 
-
 /**
  * UserForm entity. @author MyEclipse Persistence Tools
  */
 
-public class UserForm  implements java.io.Serializable {
+public class UserForm implements java.io.Serializable {
 
+	// Fields
 
-    // Fields    
+	private String userAcct;
+	private String passwd;
+	private String userName;
+	private String depart;
+	private String conPhone;
+	private Integer grpSeq;
+	private String grpName;
+	private Integer roleSeq;
+	private String roleName;
+	private String userStatus;
+	private Timestamp crtTime;
+	private String remark;
+	private String loginStatus;
 
-     private String userAcct;
-     private String passwd;
-     private String userName;
-     private String depart;
-     private String conPhone;
-     private Integer grpSeq;
-     private String grpName;
-     private Integer roleSeq;
-     private String roleName;
-     private String userStatus;
-     private Timestamp crtTime;
-     private String remark;
-     private String loginStatus;
+	// Constructors
 
+	/** default constructor */
+	public UserForm() {
+	}
 
-    // Constructors
+	/** full constructor */
+	public UserForm(String passwd, String userName, String depart,
+			String conPhone, Integer grpSeq, String grpName, Integer roleSeq,
+			String roleName, String userStatus, Timestamp crtTime,
+			String remark, String loginStatus) {
+		this.passwd = passwd;
+		this.userName = userName;
+		this.depart = depart;
+		this.conPhone = conPhone;
+		this.grpSeq = grpSeq;
+		this.grpName = grpName;
+		this.roleSeq = roleSeq;
+		this.roleName = roleName;
+		this.userStatus = userStatus;
+		this.crtTime = crtTime;
+		this.remark = remark;
+		this.loginStatus = loginStatus;
+	}
 
-    /** default constructor */
-    public UserForm() {
-    }
+	// Property accessors
 
-    
-    /** full constructor */
-    public UserForm(String passwd, String userName, String depart, String conPhone, Integer grpSeq, String grpName, Integer roleSeq, String roleName, String userStatus, Timestamp crtTime, String remark, String loginStatus) {
-        this.passwd = passwd;
-        this.userName = userName;
-        this.depart = depart;
-        this.conPhone = conPhone;
-        this.grpSeq = grpSeq;
-        this.grpName = grpName;
-        this.roleSeq = roleSeq;
-        this.roleName = roleName;
-        this.userStatus = userStatus;
-        this.crtTime = crtTime;
-        this.remark = remark;
-        this.loginStatus = loginStatus;
-    }
+	public String getUserAcct() {
+		return this.userAcct;
+	}
 
-   
-    // Property accessors
+	public void setUserAcct(String userAcct) {
+		this.userAcct = userAcct;
+	}
 
-    public String getUserAcct() {
-        return this.userAcct;
-    }
-    
-    public void setUserAcct(String userAcct) {
-        this.userAcct = userAcct;
-    }
+	public String getPasswd() {
+		return this.passwd;
+	}
 
-    public String getPasswd() {
-        return this.passwd;
-    }
-    
-    public void setPasswd(String passwd) {
-        this.passwd = passwd;
-    }
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
 
-    public String getUserName() {
-        return this.userName;
-    }
-    
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public String getUserName() {
+		return this.userName;
+	}
 
-    public String getDepart() {
-        return this.depart;
-    }
-    
-    public void setDepart(String depart) {
-        this.depart = depart;
-    }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public String getConPhone() {
-        return this.conPhone;
-    }
-    
-    public void setConPhone(String conPhone) {
-        this.conPhone = conPhone;
-    }
+	public String getDepart() {
+		return this.depart;
+	}
 
-    public Integer getGrpSeq() {
-        return this.grpSeq;
-    }
-    
-    public void setGrpSeq(Integer grpSeq) {
-        this.grpSeq = grpSeq;
-    }
+	public void setDepart(String depart) {
+		this.depart = depart;
+	}
 
-    public String getGrpName() {
-        return this.grpName;
-    }
-    
-    public void setGrpName(String grpName) {
-        this.grpName = grpName;
-    }
+	public String getConPhone() {
+		return this.conPhone;
+	}
 
-    public Integer getRoleSeq() {
-        return this.roleSeq;
-    }
-    
-    public void setRoleSeq(Integer roleSeq) {
-        this.roleSeq = roleSeq;
-    }
+	public void setConPhone(String conPhone) {
+		this.conPhone = conPhone;
+	}
 
-    public String getRoleName() {
-        return this.roleName;
-    }
-    
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
+	public Integer getGrpSeq() {
+		return this.grpSeq;
+	}
 
-    public String getUserStatus() {
-        return this.userStatus;
-    }
-    
-    public void setUserStatus(String userStatus) {
-        this.userStatus = userStatus;
-    }
+	public void setGrpSeq(Integer grpSeq) {
+		this.grpSeq = grpSeq;
+	}
 
-    public Timestamp getCrtTime() {
-        return this.crtTime;
-    }
-    
-    public void setCrtTime(Timestamp crtTime) {
-        this.crtTime = crtTime;
-    }
+	public String getGrpName() {
+		return this.grpName;
+	}
 
-    public String getRemark() {
-        return this.remark;
-    }
-    
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
+	public void setGrpName(String grpName) {
+		this.grpName = grpName;
+	}
 
-    public String getLoginStatus() {
-        return this.loginStatus;
-    }
-    
-    public void setLoginStatus(String loginStatus) {
-        this.loginStatus = loginStatus;
-    }
-   
+	public Integer getRoleSeq() {
+		return this.roleSeq;
+	}
 
+	public void setRoleSeq(Integer roleSeq) {
+		this.roleSeq = roleSeq;
+	}
 
+	public String getRoleName() {
+		return this.roleName;
+	}
 
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
 
+	public String getUserStatus() {
+		return this.userStatus;
+	}
 
+	public void setUserStatus(String userStatus) {
+		this.userStatus = userStatus;
+	}
 
+	public Timestamp getCrtTime() {
+		return this.crtTime;
+	}
 
+	public void setCrtTime(Timestamp crtTime) {
+		this.crtTime = crtTime;
+	}
+
+	public String getRemark() {
+		return this.remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public String getLoginStatus() {
+		return this.loginStatus;
+	}
+
+	public void setLoginStatus(String loginStatus) {
+		this.loginStatus = loginStatus;
+	}
 
 }

@@ -16,8 +16,8 @@
         <property name="prizeDat" type="java.sql.Timestamp">
             <column name="Prize_Dat" length="0" />
         </property>
-        <property name="prizeNam" type="java.lang.String">
-            <column name=" Prize_Nam" length="20" />
+        <property name="prizeId" type="java.lang.Integer">
+            <column name="Prize_Id" />
         </property>
     </class>
 </hibernate-mapping>
