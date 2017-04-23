@@ -10,6 +10,11 @@
 		<action name="base_*" class="baseAction" method="{1}">
 			<result name="s">/index.jsp</result>
 		</action>
+		<!-- 登录 -->
+		<action name="login_*" class="loginAction" method="{1}">
+			   <result name="error">/index.jsp</result>
+			   <result name="success" type="redirect">/main.jsp</result>
+		</action>
 		<action name="android_*" class="baseActionAndroid" method="{1}">
 			
 		</action>

@@ -3,6 +3,8 @@ package com.student.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import com.student.bean.UserForm;
+
 public interface BaseDao<T, PK extends Serializable> {
 	public void save(T entity);
 
@@ -23,5 +25,6 @@ public interface BaseDao<T, PK extends Serializable> {
 	
 	public List<T> findByTwoProperty(Class<T> entityClass, String propertyName1,
 			Object value1, String propertyName2, Object value2, int type);
-   
+   //用户登录
+	public List<UserForm> userFormLogin(UserForm userForm);
 }

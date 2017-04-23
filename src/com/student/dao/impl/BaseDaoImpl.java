@@ -3,11 +3,14 @@ package com.student.dao.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.student.bean.UserForm;
 import com.student.dao.BaseDao;
 
 public class BaseDaoImpl<T, PK extends Serializable> extends
@@ -107,10 +110,10 @@ public class BaseDaoImpl<T, PK extends Serializable> extends
 			Object value, int type) {
 		String queryString = "";
 		try {
-			if (type == 1) {// type=1ÊÇ¾«È·²éÕÒ
+			if (type == 1) {// type=1ï¿½Ç¾ï¿½È·ï¿½ï¿½ï¿½ï¿½
 				queryString = "from " + entityClass.getName()
 						+ " as model where model." + propertyName + " = ?";
-			} else if (type == 2) {// type=2ÊÇÄ£ºý²éÕÒ
+			} else if (type == 2) {// type=2ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½
 				queryString = "from " + entityClass.getName()
 						+ " as model where model." + propertyName + " like ?";
 			}
@@ -138,14 +141,14 @@ public class BaseDaoImpl<T, PK extends Serializable> extends
 		String queryString2 = "";
 		List<T> list = null;
 		try {
-			if (type == 1) {// type=1ÊÇ¾«È·²éÕÒ
+			if (type == 1) {// type=1ï¿½Ç¾ï¿½È·ï¿½ï¿½ï¿½ï¿½
 				queryString1 = "from " + entityClass.getName()
 						+ " as model where model." + propertyName1
 						+ " = ? and model." + propertyName2 + " = ?";
 				list = getHibernateTemplate()
 						.find(queryString1, value1, value2);
 
-			} else if (type == 2) {// type=2ÊÇÄ£ºý²éÕÒ
+			} else if (type == 2) {// type=2ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½
 				queryString2 = "from " + entityClass.getName()
 						+ " as model where model." + propertyName1
 						+ " like ? and model." + propertyName2 + " like ?";
@@ -157,6 +160,15 @@ public class BaseDaoImpl<T, PK extends Serializable> extends
 		} catch (RuntimeException re) {
 			throw re;
 		}
+	}
+//ç”¨æˆ·ç™»å½•
+	public List<UserForm> userFormLogin(UserForm userForm) {
+		String hql="form UserForm model where model.userAcct=? and model.passwd=? ";
+		Session session=getHibernateTemplate().getSessionFactory().getCurrentSession();
+		Query query=session.createQuery(hql);
+		query.setString(0, userForm.getUserAcct());
+		query.setString(1,userForm.getPasswd());
+		return query.list();
 	}
 
 }
