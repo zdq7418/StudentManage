@@ -3,6 +3,8 @@ package com.student.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import com.student.bean.UserForm;
+
 public interface BaseDao<T, PK extends Serializable> {
 	public void save(T entity);
 
@@ -27,5 +29,6 @@ public interface BaseDao<T, PK extends Serializable> {
 	public List findByHql(String hql);
 	
 	public List findBySql(String sql);
-   
+   //用户登录
+	public List<UserForm> userFormLogin(UserForm userForm);
 }

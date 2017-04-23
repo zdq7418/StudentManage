@@ -21,7 +21,7 @@ public class BaseAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private BaseService baseService;
+	protected  BaseService baseService;
 	
 	private PrintWriter w = getPrintWriter();
 
