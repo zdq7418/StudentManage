@@ -130,7 +130,7 @@ CREATE TABLE `teacher_form` (
 CREATE TABLE `user_form` (
   `UserId` int(11) NOT NULL AUTO_INCREMENT,
   `UserAcct` varchar(10) NOT NULL,
-  `Passwd` varchar(15) DEFAULT NULL,
+  `Passwd` varchar(100) DEFAULT NULL,
   `UserName` varchar(30) DEFAULT NULL,
   `Depart` varchar(100) DEFAULT NULL,
   `ConPhone` varchar(50) DEFAULT NULL,
