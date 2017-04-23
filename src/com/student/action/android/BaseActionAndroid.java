@@ -11,11 +11,13 @@ import org.apache.struts2.StrutsStatics;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.student.bean.ClassFrom;
+import com.student.bean.StudentForm;
 import com.student.service.BaseService;
 import com.student.util.JsonTools;
 
 public class BaseActionAndroid extends ActionSupport {
 	private BaseService baseService;
+	private String serachkey;
 	
 	private PrintWriter w = getPrintWriter();
 
@@ -24,9 +26,9 @@ public class BaseActionAndroid extends ActionSupport {
 		this.baseService = baseService;
 	}
 	
-	public void findAll(){
-		List<ClassFrom> list=baseService.findAll(ClassFrom.class);
-		w.write(JsonTools.createJsonString(list));
+	public void findStudentByKey(){
+		List<StudentForm> lists=baseService.findByProperty(StudentForm.class, "studentName", serachkey, 1);
+		w.write(JsonTools.createJsonString(lists));
 	}
 	
 	
@@ -43,5 +45,14 @@ public class BaseActionAndroid extends ActionSupport {
 		}
 		return w;
 	}
+
+	public String getSerachkey() {
+		return serachkey;
+	}
+
+	public void setSerachkey(String serachkey) {
+		this.serachkey = serachkey;
+	}
+	
 
 }
