@@ -23,5 +23,9 @@ public interface BaseDao<T, PK extends Serializable> {
 	
 	public List<T> findByTwoProperty(Class<T> entityClass, String propertyName1,
 			Object value1, String propertyName2, Object value2, int type);
+	
+	public List findByHql(String hql);
+	
+	public List findBySql(String sql);
    
 }
