@@ -142,14 +142,14 @@ public class BaseDaoImpl<T, PK extends Serializable> extends
 		String queryString2 = "";
 		List<T> list = null;
 		try {
-			if (type == 1) {// type=1�Ǿ�ȷ����
+			if (type == 1) {// 
 				queryString1 = "from " + entityClass.getName()
 						+ " as model where model." + propertyName1
 						+ " = ? and model." + propertyName2 + " = ?";
 				list = getHibernateTemplate()
 						.find(queryString1, value1, value2);
 
-			} else if (type == 2) {// type=2��ģ�����
+			} else if (type == 2) {// 
 				queryString2 = "from " + entityClass.getName()
 						+ " as model where model." + propertyName1
 						+ " like ? and model." + propertyName2 + " like ?";
