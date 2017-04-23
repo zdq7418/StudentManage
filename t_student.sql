@@ -1,5 +1,5 @@
 /*
-SQLyog 企业版 - MySQL GUI v8.14 
+SQLyog Ultimate v11.33 (64 bit)
 MySQL - 5.1.49-community : Database - db_student
 *********************************************************************
 */
@@ -18,10 +18,8 @@ USE `db_student`;
 
 /*Table structure for table `class_cour` */
 
-DROP TABLE IF EXISTS `class_cour`;
-
 CREATE TABLE `class_cour` (
-  `Class_Id` int(11) NOT NULL,
+  `Class_Id` int(11) NOT NULL AUTO_INCREMENT,
   `Class_No` int(11) DEFAULT NULL,
   `Course_Id` int(11) DEFAULT NULL,
   PRIMARY KEY (`Class_Id`)
@@ -30,8 +28,6 @@ CREATE TABLE `class_cour` (
 /*Data for the table `class_cour` */
 
 /*Table structure for table `class_from` */
-
-DROP TABLE IF EXISTS `class_from`;
 
 CREATE TABLE `class_from` (
   `Class_NO` int(11) NOT NULL AUTO_INCREMENT,
@@ -46,10 +42,8 @@ CREATE TABLE `class_from` (
 
 /*Table structure for table `course_form` */
 
-DROP TABLE IF EXISTS `course_form`;
-
 CREATE TABLE `course_form` (
-  `Course _Id` int(11) NOT NULL,
+  `Course _Id` int(11) NOT NULL AUTO_INCREMENT,
   `Course_Name` varchar(50) DEFAULT NULL,
   `Course_rem` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`Course _Id`)
@@ -59,10 +53,8 @@ CREATE TABLE `course_form` (
 
 /*Table structure for table `prize_form` */
 
-DROP TABLE IF EXISTS `prize_form`;
-
 CREATE TABLE `prize_form` (
-  `Prize_Id` int(11) NOT NULL,
+  `Prize_Id` int(11) NOT NULL AUTO_INCREMENT,
   `Prize_Name` varchar(20) DEFAULT NULL,
   `Prize_Rem` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`Prize_Id`)
@@ -72,41 +64,37 @@ CREATE TABLE `prize_form` (
 
 /*Table structure for table `prize_stud` */
 
-DROP TABLE IF EXISTS `prize_stud`;
-
 CREATE TABLE `prize_stud` (
-  `Prize_NO` varchar(14) NOT NULL,
+  `Prize_Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Prize_NO` varchar(14) DEFAULT NULL,
   `Prize_Stu` varchar(20) DEFAULT NULL,
   `Prize_Dat` datetime DEFAULT NULL,
-  `Prize_Id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Prize_NO`)
+  PRIMARY KEY (`Prize_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `prize_stud` */
 
 /*Table structure for table `score_form` */
 
-DROP TABLE IF EXISTS `score_form`;
-
 CREATE TABLE `score_form` (
-  `score_No` varchar(14) NOT NULL,
+  `score_Id` int(11) NOT NULL AUTO_INCREMENT,
+  `score_No` varchar(14) DEFAULT NULL,
   `score_Per` varchar(20) DEFAULT NULL,
   `score_Cls` varchar(20) DEFAULT NULL,
   `score_Stu` varchar(20) DEFAULT NULL,
   `score_cou` varchar(20) DEFAULT NULL,
   `score_Sco` double DEFAULT NULL,
   `student_No` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`score_No`)
+  PRIMARY KEY (`score_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `score_form` */
 
 /*Table structure for table `student_form` */
 
-DROP TABLE IF EXISTS `student_form`;
-
 CREATE TABLE `student_form` (
-  `student_NO` varchar(20) NOT NULL,
+  `student_Id` int(11) NOT NULL AUTO_INCREMENT,
+  `student_NO` varchar(20) DEFAULT NULL,
   `student_Name` varchar(10) DEFAULT NULL,
   `student_Sex` char(2) DEFAULT NULL,
   `student_Bir` datetime DEFAULT NULL,
@@ -117,17 +105,17 @@ CREATE TABLE `student_form` (
   `student_Rem` varchar(100) DEFAULT NULL,
   `student_Accout` varchar(20) DEFAULT NULL,
   `student_Urlimage` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`student_NO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`student_Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `student_form` */
 
+insert  into `student_form`(`student_Id`,`student_NO`,`student_Name`,`student_Sex`,`student_Bir`,`student_Cla`,`student_Tel`,`student_Esd`,`student_Add`,`student_Rem`,`student_Accout`,`student_Urlimage`) values (1,'2014','zhangsan','0','1994-07-14 01:24:16',NULL,'15845622589','2014-03-06 01:24:48','湖南邵阳',NULL,NULL,NULL);
+
 /*Table structure for table `teacher_form` */
 
-DROP TABLE IF EXISTS `teacher_form`;
-
 CREATE TABLE `teacher_form` (
-  `Teacher_Id` int(11) NOT NULL,
+  `Teacher_Id` int(11) NOT NULL AUTO_INCREMENT,
   `Teacher_Name` varchar(20) DEFAULT NULL,
   `Teacher_Account` varchar(20) DEFAULT NULL,
   `Teacher_tel` varchar(20) DEFAULT NULL,
@@ -139,9 +127,8 @@ CREATE TABLE `teacher_form` (
 
 /*Table structure for table `user_form` */
 
-DROP TABLE IF EXISTS `user_form`;
-
 CREATE TABLE `user_form` (
+  `UserId` int(11) NOT NULL AUTO_INCREMENT,
   `UserAcct` varchar(10) NOT NULL,
   `Passwd` varchar(15) DEFAULT NULL,
   `UserName` varchar(30) DEFAULT NULL,
@@ -155,14 +142,12 @@ CREATE TABLE `user_form` (
   `CrtTime` datetime DEFAULT NULL,
   `Remark` varchar(100) DEFAULT NULL,
   `LoginStatus` char(2) DEFAULT NULL,
-  PRIMARY KEY (`UserAcct`)
+  PRIMARY KEY (`UserId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `user_form` */
 
 /*Table structure for table `user_group` */
-
-DROP TABLE IF EXISTS `user_group`;
 
 CREATE TABLE `user_group` (
   `GrpSeq` int(11) NOT NULL AUTO_INCREMENT,
@@ -178,8 +163,6 @@ CREATE TABLE `user_group` (
 
 /*Table structure for table `user_menu` */
 
-DROP TABLE IF EXISTS `user_menu`;
-
 CREATE TABLE `user_menu` (
   `MenuSeq` int(11) NOT NULL AUTO_INCREMENT,
   `MenuName` varchar(50) DEFAULT NULL,
@@ -193,10 +176,8 @@ CREATE TABLE `user_menu` (
 
 /*Table structure for table `user_role` */
 
-DROP TABLE IF EXISTS `user_role`;
-
 CREATE TABLE `user_role` (
-  `roleId` int(11) NOT NULL,
+  `roleId` int(11) NOT NULL AUTO_INCREMENT,
   `roleName` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`roleId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -204,8 +185,6 @@ CREATE TABLE `user_role` (
 /*Data for the table `user_role` */
 
 /*Table structure for table `user_rome` */
-
-DROP TABLE IF EXISTS `user_rome`;
 
 CREATE TABLE `user_rome` (
   `RoMeSeq` int(11) NOT NULL AUTO_INCREMENT,

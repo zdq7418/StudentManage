@@ -43,7 +43,20 @@
 				<value>com/student/mapping/UserMenu.hbm.xml</value>
 				<value>com/student/mapping/UserRome.hbm.xml</value>
 				<value>com/student/mapping/TeacherForm.hbm.xml</value>
-				<value>com/student/mapping/UserRole.hbm.xml</value></list>
+				<value>com/student/mapping/UserRole.hbm.xml</value>
+				<value>com/student/bean/UserGroup.hbm.xml</value>
+				<value>com/student/bean/UserRome.hbm.xml</value>
+				<value>com/student/bean/UserRole.hbm.xml</value>
+				<value>com/student/bean/UserMenu.hbm.xml</value>
+				<value>com/student/bean/StudentForm.hbm.xml</value>
+				<value>com/student/bean/ClassCour.hbm.xml</value>
+				<value>com/student/bean/CourseForm.hbm.xml</value>
+				<value>com/student/bean/ScoreForm.hbm.xml</value>
+				<value>com/student/bean/TeacherForm.hbm.xml</value>
+				<value>com/student/bean/PrizeStud.hbm.xml</value>
+				<value>com/student/bean/UserForm.hbm.xml</value>
+				<value>com/student/bean/ClassFrom.hbm.xml</value>
+				<value>com/student/bean/PrizeForm.hbm.xml</value></list>
 		</property>
 	 </bean>
 	

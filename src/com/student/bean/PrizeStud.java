@@ -10,10 +10,10 @@ public class PrizeStud implements java.io.Serializable {
 
 	// Fields
 
+	private Integer prizeId;
 	private String prizeNo;
 	private String prizeStu;
 	private Timestamp prizeDat;
-	private Integer prizeId;
 
 	// Constructors
 
@@ -22,13 +22,21 @@ public class PrizeStud implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public PrizeStud(String prizeStu, Timestamp prizeDat, Integer prizeId) {
+	public PrizeStud(String prizeNo, String prizeStu, Timestamp prizeDat) {
+		this.prizeNo = prizeNo;
 		this.prizeStu = prizeStu;
 		this.prizeDat = prizeDat;
-		this.prizeId = prizeId;
 	}
 
 	// Property accessors
+
+	public Integer getPrizeId() {
+		return this.prizeId;
+	}
+
+	public void setPrizeId(Integer prizeId) {
+		this.prizeId = prizeId;
+	}
 
 	public String getPrizeNo() {
 		return this.prizeNo;
@@ -52,14 +60,6 @@ public class PrizeStud implements java.io.Serializable {
 
 	public void setPrizeDat(Timestamp prizeDat) {
 		this.prizeDat = prizeDat;
-	}
-
-	public Integer getPrizeId() {
-		return this.prizeId;
-	}
-
-	public void setPrizeId(Integer prizeId) {
-		this.prizeId = prizeId;
 	}
 
 }
