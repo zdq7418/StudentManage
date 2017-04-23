@@ -27,4 +27,8 @@ public interface BaseService<T, PK extends Serializable> {
 			Object value1, String propertyName2, Object value2, int type);
   //用户登录
 	public UserForm userFormLogin(UserForm userForm);
+	
+	public List findByHql(String hql);
+	
+	public List findBySql(String sql);
 }

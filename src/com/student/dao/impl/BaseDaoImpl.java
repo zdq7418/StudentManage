@@ -110,14 +110,16 @@ public class BaseDaoImpl<T, PK extends Serializable> extends
 			Object value, int type) {
 		String queryString = "";
 		try {
-			if (type == 1) {// type=1�Ǿ�ȷ����
+
+			if (type == 1) {// 
 				queryString = "from " + entityClass.getName()
 						+ " as model where model." + propertyName + " = ?";
-			} else if (type == 2) {// type=2��ģ�����
+			} else if (type == 2) {//
 				queryString = "from " + entityClass.getName()
 						+ " as model where model." + propertyName + " like ?";
+				return getHibernateTemplate().find(queryString, "%"+value+"%");
 			}
-			return getHibernateTemplate().find(queryString, value);
+			return null;
 		} catch (RuntimeException re) {
 			throw re;
 		}
@@ -141,19 +143,20 @@ public class BaseDaoImpl<T, PK extends Serializable> extends
 		String queryString2 = "";
 		List<T> list = null;
 		try {
-			if (type == 1) {// type=1�Ǿ�ȷ����
+			if (type == 1) {// 
 				queryString1 = "from " + entityClass.getName()
 						+ " as model where model." + propertyName1
 						+ " = ? and model." + propertyName2 + " = ?";
 				list = getHibernateTemplate()
 						.find(queryString1, value1, value2);
 
-			} else if (type == 2) {// type=2��ģ�����
+
+			} else if (type == 2) {// 
 				queryString2 = "from " + entityClass.getName()
 						+ " as model where model." + propertyName1
 						+ " like ? and model." + propertyName2 + " like ?";
 				list = getHibernateTemplate()
-						.find(queryString2, value1, value2);
+						.find(queryString2, "%"+value1+"%", "%"+value2+"%");
 			}
 			return list;
 
@@ -169,6 +172,19 @@ public class BaseDaoImpl<T, PK extends Serializable> extends
 		query.setString(0, userForm.getUserAcct());
 		query.setString(1,userForm.getPasswd());
 		return query.list();
+	}
+
+	public List findByHql(String hql) {
+		// TODO Auto-generated method stub
+		return getHibernateTemplate().find(hql);
+	}
+
+	public List findBySql(String sql) {
+		// TODO Auto-generated method stub
+		Session session=getSession();
+		Query query = session.createSQLQuery(sql);
+		List data = query.list();
+		return data;
 	}
 
 }
