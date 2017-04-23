@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			              <i class="iconfont">&#xe62e;</i>
 			              <span>请输入用户名</span>
 			            </div>
-						<form>
+						<form action="login" method="post">
 							<div class="lg-username input-item clearfix">
 								<i class="iconfont">&#xe60d;</i>
 								<input type="text" placeholder="账号/邮箱">

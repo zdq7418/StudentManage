@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.student.bean.UserForm;
 import com.student.dao.BaseDao;
 
 public class BaseDaoImpl<T, PK extends Serializable> extends
@@ -109,10 +110,10 @@ public class BaseDaoImpl<T, PK extends Serializable> extends
 			Object value, int type) {
 		String queryString = "";
 		try {
+
 			if (type == 1) {// 
 				queryString = "from " + entityClass.getName()
 						+ " as model where model." + propertyName + " = ?";
-				return getHibernateTemplate().find(queryString, value);
 			} else if (type == 2) {//
 				queryString = "from " + entityClass.getName()
 						+ " as model where model." + propertyName + " like ?";
@@ -149,6 +150,7 @@ public class BaseDaoImpl<T, PK extends Serializable> extends
 				list = getHibernateTemplate()
 						.find(queryString1, value1, value2);
 
+
 			} else if (type == 2) {// 
 				queryString2 = "from " + entityClass.getName()
 						+ " as model where model." + propertyName1
@@ -161,6 +163,15 @@ public class BaseDaoImpl<T, PK extends Serializable> extends
 		} catch (RuntimeException re) {
 			throw re;
 		}
+	}
+//用户登录
+	public List<UserForm> userFormLogin(UserForm userForm) {
+		String hql="form UserForm model where model.userAcct=? and model.passwd=? ";
+		Session session=getHibernateTemplate().getSessionFactory().getCurrentSession();
+		Query query=session.createQuery(hql);
+		query.setString(0, userForm.getUserAcct());
+		query.setString(1,userForm.getPasswd());
+		return query.list();
 	}
 
 	public List findByHql(String hql) {

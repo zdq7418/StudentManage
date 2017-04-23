@@ -5,14 +5,20 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.student.bean.UserForm;
+import com.student.service.BaseService;
+import com.student.util.DataIdentification;
 import com.student.util.StringUtil;
 
 
 public class LoginAction extends BaseAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private UserForm userForm;//用户表
 	private String error;//错误信息提示
 	private String verCode;//验证码
-	/*public String Login(){
+	public String Login(){
 		
 		try {
 			// 获取session
@@ -30,7 +36,7 @@ public class LoginAction extends BaseAction {
 				return ERROR;
 			}
 			
-			 * 刷新时,验证码空指针异常,并且判断登录时验证码是否输入
+			/* * 刷新时,验证码空指针异常,并且判断登录时验证码是否输入*/
 			 
 			try {
 				if (verCode.equals("")) {
@@ -41,7 +47,7 @@ public class LoginAction extends BaseAction {
 				verCode = rand;
 			}
 			
-			 * 刷新时,用户空指针异常
+			/* * 刷新时,用户空指针异常*/
 			 
 			if (userForm == null) {
 				UserForm sysmUser = (UserForm) session
@@ -59,18 +65,18 @@ public class LoginAction extends BaseAction {
 				return ERROR;
 			}
 			// 查询用户
-		//UserForm userForms= apfSysmUserService.userLogin(sysmUser);
+		UserForm userForms= baseService.userFormLogin(userForm);
 			// 判断用户是否存在
 			if (userForms == null) {
 				error="登录名或密码有误";
 				return ERROR;
-			} else if (userForms.getUserstastus() != null
-					&& userForms.getUserstastus().trim()
+			} else if (userForms.getLoginStatus() != null
+					&& userForms.getLoginStatus().trim()
 							.equals(DataIdentification.USER_STATE_DONOTUSE)) {
 				error="当前用户不可用,已禁止登录";
 				return ERROR;
 			} else {
-				// 获取用户菜单
+				/*// 获取用户菜单
 				ApfSysmMenu apfSysmMenu = apfSysmMenuService
 						.findApfSysmMenuList(sysmUser0.getRolenumber());
 
@@ -78,15 +84,15 @@ public class LoginAction extends BaseAction {
 				session.put("sysmUser", userForms);
 				session.put("sysmMenu", sysmMenu);
 
-				return this.SUCCESS;
+				return this.SUCCESS;*/
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			error="抱歉，登录失败";
 			return ERROR;
 		}
-	}*/
+		return this.SUCCESS;
+	}
 	public UserForm getUserForm() {
 		return userForm;
 	}
@@ -108,5 +114,4 @@ public class LoginAction extends BaseAction {
 	public void setVerCode(String verCode) {
 		this.verCode = verCode;
 	}
-	
 }

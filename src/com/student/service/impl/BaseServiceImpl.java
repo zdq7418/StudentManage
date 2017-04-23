@@ -72,8 +72,8 @@ public class BaseServiceImpl<T, PK extends Serializable> implements BaseService<
 	}
 //用户登录 
 	public UserForm userFormLogin(UserForm userForm) {
-		
-		return null;
+		//List<UserForm> userFormLogin = baseDao.userFormLogin(userForm);
+		return (UserForm) baseDao.userFormLogin(userForm);
 	}
 
 	public List findByHql(String hql) {
