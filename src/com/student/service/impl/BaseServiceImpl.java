@@ -76,6 +76,16 @@ public class BaseServiceImpl<T, PK extends Serializable> implements BaseService<
 		return null;
 	}
 
+	public List findByHql(String hql) {
+		// TODO Auto-generated method stub
+		return baseDao.findByHql(hql);
+	}
+
+	public List findBySql(String sql) {
+		// TODO Auto-generated method stub
+		return baseDao.findBySql(sql);
+	}
+
 
 	
 
