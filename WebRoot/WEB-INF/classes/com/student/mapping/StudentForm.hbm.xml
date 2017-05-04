@@ -22,8 +22,8 @@
         <property name="studentBir" type="java.sql.Timestamp">
             <column name="student_Bir" length="0" />
         </property>
-        <property name="studentCla" type="java.lang.String">
-            <column name="student_Cla" length="20" />
+        <property name="studentCla" type="java.lang.Integer">
+            <column name="student_Cla" />
         </property>
         <property name="studentTel" type="java.lang.String">
             <column name="student_Tel" length="13" />
@@ -41,7 +41,7 @@
             <column name="student_Accout" length="20" />
         </property>
         <property name="studentUrlimage" type="java.lang.String">
-            <column name="student_Urlimage" length="50" />
+            <column name="student_Urlimage" length="300" />
         </property>
     </class>
 </hibernate-mapping>

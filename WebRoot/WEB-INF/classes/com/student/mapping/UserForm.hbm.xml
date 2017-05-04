@@ -14,7 +14,7 @@
             <column name="UserAcct" length="10" not-null="true" />
         </property>
         <property name="passwd" type="java.lang.String">
-            <column name="Passwd" length="15" />
+            <column name="Passwd" length="100" />
         </property>
         <property name="userName" type="java.lang.String">
             <column name="UserName" length="30" />

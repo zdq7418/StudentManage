@@ -15,7 +15,7 @@ public class StudentForm implements java.io.Serializable {
 	private String studentName;
 	private String studentSex;
 	private Timestamp studentBir;
-	private String studentCla;
+	private int studentCla;
 	private String studentTel;
 	private Timestamp studentEsd;
 	private String studentAdd;
@@ -31,7 +31,7 @@ public class StudentForm implements java.io.Serializable {
 
 	/** full constructor */
 	public StudentForm(String studentNo, String studentName, String studentSex,
-			Timestamp studentBir, String studentCla, String studentTel,
+			Timestamp studentBir, int studentCla, String studentTel,
 			Timestamp studentEsd, String studentAdd, String studentRem,
 			String studentAccout, String studentUrlimage) {
 		this.studentNo = studentNo;
@@ -89,11 +89,11 @@ public class StudentForm implements java.io.Serializable {
 		this.studentBir = studentBir;
 	}
 
-	public String getStudentCla() {
+	public int getStudentCla() {
 		return this.studentCla;
 	}
 
-	public void setStudentCla(String studentCla) {
+	public void setStudentCla(int studentCla) {
 		this.studentCla = studentCla;
 	}
 
