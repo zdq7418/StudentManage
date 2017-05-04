@@ -159,6 +159,13 @@ public class BaseActionAndroid extends ActionSupport {
 		w.write("1");
 	}
 	
+	public void delCLass(){
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		ClassFrom classFrom=gson.fromJson(classGson, ClassFrom.class);
+		baseService.delete(classFrom);
+		w.write("1");
+	}
+	
 	public void updateClass(){
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		ClassFrom classFrom=gson.fromJson(classGson, ClassFrom.class);
