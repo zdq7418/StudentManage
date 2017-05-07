@@ -10,11 +10,12 @@ public class StudentForm implements java.io.Serializable {
 
 	// Fields
 
+	private Integer studentId;
 	private String studentNo;
 	private String studentName;
 	private String studentSex;
 	private Timestamp studentBir;
-	private String studentCla;
+	private int studentCla;
 	private String studentTel;
 	private Timestamp studentEsd;
 	private String studentAdd;
@@ -29,10 +30,11 @@ public class StudentForm implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public StudentForm(String studentName, String studentSex,
-			Timestamp studentBir, String studentCla, String studentTel,
+	public StudentForm(String studentNo, String studentName, String studentSex,
+			Timestamp studentBir, int studentCla, String studentTel,
 			Timestamp studentEsd, String studentAdd, String studentRem,
 			String studentAccout, String studentUrlimage) {
+		this.studentNo = studentNo;
 		this.studentName = studentName;
 		this.studentSex = studentSex;
 		this.studentBir = studentBir;
@@ -46,6 +48,14 @@ public class StudentForm implements java.io.Serializable {
 	}
 
 	// Property accessors
+
+	public Integer getStudentId() {
+		return this.studentId;
+	}
+
+	public void setStudentId(Integer studentId) {
+		this.studentId = studentId;
+	}
 
 	public String getStudentNo() {
 		return this.studentNo;
@@ -79,11 +89,11 @@ public class StudentForm implements java.io.Serializable {
 		this.studentBir = studentBir;
 	}
 
-	public String getStudentCla() {
+	public int getStudentCla() {
 		return this.studentCla;
 	}
 
-	public void setStudentCla(String studentCla) {
+	public void setStudentCla(int studentCla) {
 		this.studentCla = studentCla;
 	}
 

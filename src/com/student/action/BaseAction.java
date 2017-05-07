@@ -22,6 +22,7 @@ public class BaseAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected  BaseService baseService;
+	private String serachkey;
 	
 	private PrintWriter w = getPrintWriter();
 
@@ -57,6 +58,16 @@ public class BaseAction extends ActionSupport {
 	}
 	public void setBaseService(BaseService baseService) {
 		this.baseService = baseService;
+	}
+
+
+	public String getSerachkey() {
+		return serachkey;
+	}
+
+
+	public void setSerachkey(String serachkey) {
+		this.serachkey = serachkey;
 	}
 
 

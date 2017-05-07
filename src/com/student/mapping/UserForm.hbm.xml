@@ -6,12 +6,15 @@
 -->
 <hibernate-mapping>
     <class name="com.student.bean.UserForm" table="user_form" catalog="db_student">
-        <id name="userAcct" type="java.lang.String">
-            <column name="UserAcct" length="10" />
+        <id name="userId" type="java.lang.Integer">
+            <column name="UserId" />
             <generator class="native" />
         </id>
+        <property name="userAcct" type="java.lang.String">
+            <column name="UserAcct" length="10" not-null="true" />
+        </property>
         <property name="passwd" type="java.lang.String">
-            <column name="Passwd" length="15" />
+            <column name="Passwd" length="100" />
         </property>
         <property name="userName" type="java.lang.String">
             <column name="UserName" length="30" />

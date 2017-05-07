@@ -10,6 +10,7 @@ public class UserForm implements java.io.Serializable {
 
 	// Fields
 
+	private Integer userId;
 	private String userAcct;
 	private String passwd;
 	private String userName;
@@ -30,11 +31,17 @@ public class UserForm implements java.io.Serializable {
 	public UserForm() {
 	}
 
+	/** minimal constructor */
+	public UserForm(String userAcct) {
+		this.userAcct = userAcct;
+	}
+
 	/** full constructor */
-	public UserForm(String passwd, String userName, String depart,
-			String conPhone, Integer grpSeq, String grpName, Integer roleSeq,
-			String roleName, String userStatus, Timestamp crtTime,
-			String remark, String loginStatus) {
+	public UserForm(String userAcct, String passwd, String userName,
+			String depart, String conPhone, Integer grpSeq, String grpName,
+			Integer roleSeq, String roleName, String userStatus,
+			Timestamp crtTime, String remark, String loginStatus) {
+		this.userAcct = userAcct;
 		this.passwd = passwd;
 		this.userName = userName;
 		this.depart = depart;
@@ -50,6 +57,14 @@ public class UserForm implements java.io.Serializable {
 	}
 
 	// Property accessors
+
+	public Integer getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 
 	public String getUserAcct() {
 		return this.userAcct;

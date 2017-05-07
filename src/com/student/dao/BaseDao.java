@@ -31,4 +31,6 @@ public interface BaseDao<T, PK extends Serializable> {
 	public List findBySql(String sql);
    //用户登录
 	public List<UserForm> userFormLogin(UserForm userForm);
+	
+	
 }

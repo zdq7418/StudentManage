@@ -114,6 +114,7 @@ public class BaseDaoImpl<T, PK extends Serializable> extends
 			if (type == 1) {// 
 				queryString = "from " + entityClass.getName()
 						+ " as model where model." + propertyName + " = ?";
+				return getHibernateTemplate().find(queryString, value);
 			} else if (type == 2) {//
 				queryString = "from " + entityClass.getName()
 						+ " as model where model." + propertyName + " like ?";

@@ -6,10 +6,13 @@
 -->
 <hibernate-mapping>
     <class name="com.student.bean.ScoreForm" table="score_form" catalog="db_student">
-        <id name="scoreNo" type="java.lang.String">
-            <column name="score_No" length="14" />
+        <id name="scoreId" type="java.lang.Integer">
+            <column name="score_Id" />
             <generator class="native" />
         </id>
+        <property name="scoreNo" type="java.lang.String">
+            <column name="score_No" length="14" />
+        </property>
         <property name="scorePer" type="java.lang.String">
             <column name="score_Per" length="20" />
         </property>
