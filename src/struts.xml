@@ -6,7 +6,7 @@
 	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
 	<constant name="struts.convention.package.locators" value="controller" />
 
-	<package name="default" extends="struts-default" namespace="/">
+	<package name="default" extends="struts-default">
 		<action name="base_*" class="baseAction" method="{1}">
 			<result name="s">/index.jsp</result>
 		</action>

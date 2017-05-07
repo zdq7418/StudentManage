@@ -59,7 +59,7 @@ public class BaseActionAndroid extends ActionSupport {
 	
 	private PrintWriter w = getPrintWriter();
 
-
+	Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 	public void setBaseService(BaseService baseService) {
 		this.baseService = baseService;
 	}
@@ -121,8 +121,21 @@ public class BaseActionAndroid extends ActionSupport {
 		}
 		
 	}
+	public void delStuAndAcou(){
+		List<StudentForm> list=(List<StudentForm>)baseService.findByProperty(StudentForm.class, "studentAccout", account, 1);
+		if (list!=null&&list.size()>0) {
+			studentForm=(StudentForm) list.get(0);
+			baseService.delete(studentForm);
+		}
+		List<UserForm> user=baseService.findByProperty(UserForm.class, "userAcct", account, 1);
+		if (user!=null&&user.size()>0) {
+			UserForm u=user.get(0);
+			baseService.delete(u);
+		}
+		w.write("1");
+	}
 	public void findAllStu(){
-		if ("".equals(serachkey)) {
+		if ("".equals(serachkey) || serachkey==null) {
 			List<StudentForm> list=baseService.findAll(StudentForm.class);
 			w.write(JsonTools.createJsonString(list));
 		}else{
@@ -159,6 +172,22 @@ public class BaseActionAndroid extends ActionSupport {
 		w.write("1");
 	}
 	
+	public void addStudent(){
+		Map<String, String> map=gson.fromJson(studentGson,new TypeToken<Map<String, String>>(){}.getType());
+		UserForm userForm=gson.fromJson(map.get("user"), UserForm.class);
+		if (checkAccout(userForm.getUserAcct())>0) {
+			w.write("0");
+		}else{
+			StudentForm studentForm=gson.fromJson(map.get("student"), StudentForm.class);
+			userForm.setPasswd(MD5.getMd5(userForm.getPasswd()));
+			baseService.save(userForm);
+			baseService.save(studentForm);
+			w.write("1");
+		}
+		
+		
+	}
+	
 	public void delCLass(){
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		ClassFrom classFrom=gson.fromJson(classGson, ClassFrom.class);
@@ -179,7 +208,7 @@ public class BaseActionAndroid extends ActionSupport {
 	}
 	
 	public void findAllClas(){
-		if ("".equals(serachkey)) {
+		if ("".equals(serachkey) || serachkey==null) {
 			String hql="from ClassFrom order by classNo desc";
 			List<ClassFrom> list=baseService.findByHql(hql);
 			w.write(JsonTools.createJsonString(list));
