@@ -67,7 +67,7 @@
 				<value>com/student/mapping/UserRome.hbm.xml</value>
 				<value>com/student/mapping/TeacherForm.hbm.xml</value>
 				<value>com/student/mapping/UserRole.hbm.xml</value>
-				</list>
+				<value>com/student/mapping/TestFrom.hbm.xml</value></list>
 		</property>
 	 </bean>
 	

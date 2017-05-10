@@ -24,8 +24,11 @@ import com.google.gson.reflect.TypeToken;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.student.bean.ClassFrom;
+import com.student.bean.CourseForm;
+import com.student.bean.ScoreForm;
 import com.student.bean.StudentForm;
 import com.student.bean.TeacherForm;
+import com.student.bean.TestFrom;
 import com.student.bean.UserForm;
 import com.student.service.BaseService;
 import com.student.util.JsonTools;
@@ -48,6 +51,9 @@ public class BaseActionAndroid extends ActionSupport {
 	private String studentGson;
 	private String teacherGson;
 	private String classGson;
+	private String courseGson;
+	private String testGson;
+	private String scoreGson;
 	//上传文件存放路径   
     private final static String UPLOADDIR = "upload";   
     //上传文件集合   
@@ -106,17 +112,20 @@ public class BaseActionAndroid extends ActionSupport {
 			List<TeacherForm> list=(List<TeacherForm>)baseService.findByProperty(TeacherForm.class, "teacherAccount", account, 1);
 			w.write(JsonTools.createJsonString(list!=null?list:null));
 		}else{
+			Map<String, String> map=new HashMap<String, String>();
 			List<StudentForm> list=(List<StudentForm>)baseService.findByProperty(StudentForm.class, "studentAccout", account, 1);
 			if (list!=null&&list.size()>0) {
 				studentForm=(StudentForm) list.get(0);
+				map.put("student", JsonTools.createJsonString(studentForm));
 				if (studentForm.getStudentCla()!=0) {
 					classFrom=(ClassFrom) baseService.findById(ClassFrom.class, studentForm.getStudentCla());
+					map.put("class", JsonTools.createJsonString(classFrom));
 				}
 			}
-			
-			Map<String, String> map=new HashMap<String, String>();
-			map.put("student", JsonTools.createJsonString(list));
-			map.put("class", JsonTools.createJsonString(classFrom));
+			List user=baseService.findByProperty(UserForm.class, "userAcct", account, 1);
+			if (user!=null&&user.size()>0) {
+				map.put("user", JsonTools.createJsonString(user.get(0)));
+			}
 			w.write(JsonTools.createJsonString(map));
 		}
 		
@@ -145,6 +154,10 @@ public class BaseActionAndroid extends ActionSupport {
 		}
 		
 		
+	}
+	public void findStuByClassId(){
+		List<StudentForm> list=baseService.findByProperty(StudentForm.class, "studentCla", Integer.valueOf(serachkey), 1);
+		w.write(JsonTools.createJsonString(list));
 	}
 	public void updateStudent(){
 		studentForm=new StudentForm();
@@ -175,15 +188,23 @@ public class BaseActionAndroid extends ActionSupport {
 	public void addStudent(){
 		Map<String, String> map=gson.fromJson(studentGson,new TypeToken<Map<String, String>>(){}.getType());
 		UserForm userForm=gson.fromJson(map.get("user"), UserForm.class);
-		if (checkAccout(userForm.getUserAcct())>0) {
-			w.write("0");
+		if (userForm.getUserId()==null) {
+			userForm.setPasswd(MD5.getMd5(userForm.getPasswd()));
+			if (checkAccout(userForm.getUserAcct())>0) {
+				w.write("0");
+			}else{
+				StudentForm studentForm=gson.fromJson(map.get("student"), StudentForm.class);
+				baseService.save(userForm);
+				baseService.save(studentForm);
+				w.write("1");
+			}
 		}else{
 			StudentForm studentForm=gson.fromJson(map.get("student"), StudentForm.class);
-			userForm.setPasswd(MD5.getMd5(userForm.getPasswd()));
-			baseService.save(userForm);
-			baseService.save(studentForm);
+			baseService.update(userForm);
+			baseService.update(studentForm);
 			w.write("1");
 		}
+		
 		
 		
 	}
@@ -258,7 +279,76 @@ public class BaseActionAndroid extends ActionSupport {
 		w.write(JsonTools.createJsonString(list));
 	}
 	
-
+	public void findCourse(){
+		List<CourseForm> list=new ArrayList<CourseForm>();
+		if (serachkey!=null && !"".equals(serachkey)) {
+			list=baseService.findByProperty(CourseForm.class, "courseName", serachkey, 2);
+		}else{
+			list=baseService.findAll(CourseForm.class);
+		}
+		w.write(JsonTools.createJsonString(list));
+	}
+	
+	public void addOrUpCourse(){
+		CourseForm courseForm=gson.fromJson(courseGson, CourseForm.class);
+		if (courseForm.getCourseId()!=null) {
+			baseService.update(courseForm);
+		}else{
+			baseService.save(courseForm);	
+		}
+		w.write("1");
+	}
+	
+	public void delCourse(){
+		CourseForm courseForm=gson.fromJson(courseGson, CourseForm.class);
+		baseService.delete(courseForm);
+		w.write("1");
+	}
+	
+	public void findTest(){
+		List<TestFrom> list=new ArrayList<TestFrom>();
+		if (serachkey!=null && !"".equals(serachkey)) {
+			String hql="from TestFrom where 1=1 and testQihao like '%"+serachkey+"%' or testName like '%"+serachkey+"%'";
+			list=baseService.findByHql(hql);
+		}else{
+			list=baseService.findAll(TestFrom.class);
+		}
+		w.write(JsonTools.createJsonString(list));
+	}
+	
+	public void findTestByCourseId(){
+		List<TestFrom> list=new ArrayList<TestFrom>();
+		list=baseService.findByProperty(TestFrom.class, "courseId", Integer.valueOf(serachkey), 1);
+		w.write(JsonTools.createJsonString(list));
+	}
+	
+	public void addOrUpTest(){
+		TestFrom t=gson.fromJson(testGson, TestFrom.class);
+		if (t.getId()!=null) {
+			baseService.update(t);
+		}else{
+			baseService.save(t);
+		}
+		w.write("1");
+	}
+	
+	public void delTest(){
+		TestFrom courseForm=gson.fromJson(testGson, TestFrom.class);
+		baseService.delete(courseForm);
+		w.write("1");
+	}
+	
+	public void findScore(){
+		
+	}
+	
+	public void saveScore(){
+		ScoreForm s=gson.fromJson(scoreGson, ScoreForm.class);
+		baseService.save(s);
+		w.write("1");
+	}
+	
+	
 	
 	private String uploadFile(String name) throws FileNotFoundException, IOException {   
 		File uploadFile=new File("");
@@ -311,8 +401,6 @@ public class BaseActionAndroid extends ActionSupport {
 	}
 	
 	
-
-	
 	public File getFile() {
 		return file;
 	}
@@ -335,6 +423,12 @@ public class BaseActionAndroid extends ActionSupport {
 		return listStudent;
 	}
 
+	public String getScoreGson() {
+		return scoreGson;
+	}
+	public void setScoreGson(String scoreGson) {
+		this.scoreGson = scoreGson;
+	}
 	public void setListStudent(String listStudent) {
 		this.listStudent = listStudent;
 	}
@@ -395,6 +489,14 @@ public class BaseActionAndroid extends ActionSupport {
 	public TeacherForm getTeacherForm() {
 		return teacherForm;
 	}
+	
+	
+	public String getCourseGson() {
+		return courseGson;
+	}
+	public void setCourseGson(String courseGson) {
+		this.courseGson = courseGson;
+	}
 	public void setTeacherForm(TeacherForm teacherForm) {
 		this.teacherForm = teacherForm;
 	}
@@ -409,6 +511,12 @@ public class BaseActionAndroid extends ActionSupport {
 	}
 	public void setClassGson(String classGson) {
 		this.classGson = classGson;
+	}
+	public String getTestGson() {
+		return testGson;
+	}
+	public void setTestGson(String testGson) {
+		this.testGson = testGson;
 	}
 
 	
