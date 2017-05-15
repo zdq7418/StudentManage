@@ -10,26 +10,30 @@
             <column name="score_Id" />
             <generator class="native" />
         </id>
-        <property name="scoreNo" type="java.lang.String">
-            <column name="score_No" length="14" />
-        </property>
-        <property name="scorePer" type="java.lang.String">
-            <column name="score_Per" length="20" />
-        </property>
-        <property name="scoreCls" type="java.lang.String">
-            <column name="score_Cls" length="20" />
-        </property>
-        <property name="scoreStu" type="java.lang.String">
-            <column name="score_Stu" length="20" />
-        </property>
-        <property name="scoreCou" type="java.lang.String">
-            <column name="score_cou" length="20" />
+        <property name="scoreCls" type="java.lang.Integer">
+            <column name="score_Cls">
+                <comment>学生班级ID</comment>
+            </column>
         </property>
         <property name="scoreSco" type="java.lang.Double">
-            <column name="score_Sco" precision="22" scale="0" />
+            <column name="score_Sco" precision="22" scale="0">
+                <comment>考试分数</comment>
+            </column>
         </property>
         <property name="studentNo" type="java.lang.String">
-            <column name="student_No" length="20" />
+            <column name="student_No" length="20">
+                <comment>学生学号</comment>
+            </column>
+        </property>
+        <property name="testId" type="java.lang.Integer">
+            <column name="test_id">
+                <comment>考试ID</comment>
+            </column>
+        </property>
+        <property name="studentId" type="java.lang.Integer">
+            <column name="student_Id">
+                <comment>学生Id</comment>
+            </column>
         </property>
     </class>
 </hibernate-mapping>
