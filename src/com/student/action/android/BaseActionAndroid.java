@@ -156,8 +156,13 @@ public class BaseActionAndroid extends ActionSupport {
 		
 	}
 	public void findStuByClassId(){
+		if (serachkey==null || serachkey=="" || "0".equals(serachkey)) {
+			List<StudentForm> list=baseService.findAll(StudentForm.class);
+			w.write(JsonTools.createJsonString(list));
+		}else{
 		List<StudentForm> list=baseService.findByProperty(StudentForm.class, "studentCla", Integer.valueOf(serachkey), 1);
 		w.write(JsonTools.createJsonString(list));
+		}
 	}
 	public void updateStudent(){
 		studentForm=new StudentForm();
@@ -318,7 +323,11 @@ public class BaseActionAndroid extends ActionSupport {
 	
 	public void findTestByCourseId(){
 		List<TestFrom> list=new ArrayList<TestFrom>();
-		list=baseService.findByProperty(TestFrom.class, "courseId", Integer.valueOf(serachkey), 1);
+		if ("0".equals(serachkey) || null==serachkey || serachkey=="") {
+			list=baseService.findAll(TestFrom.class);
+		}else{
+			list=baseService.findByProperty(TestFrom.class, "courseId", Integer.valueOf(serachkey), 1);
+		}
 		w.write(JsonTools.createJsonString(list));
 	}
 	
@@ -339,13 +348,71 @@ public class BaseActionAndroid extends ActionSupport {
 	}
 	
 	public void findScore(){
+		Map<String, String> map=new HashMap<String, String>();
+		String courseId="";
+		String testId="";
+		String classNo="";
+		String studentId="";
+		StringBuffer hql=new StringBuffer();
+		if (serachkey!=null && serachkey!=""&&!"".equals(serachkey)) {
+			map=gson.fromJson(serachkey,new TypeToken<Map<String, String>>(){}.getType());
+			if (map.size()!=0) {
+				courseId=map.get("courseId");
+				 testId=map.get("testId");
+				 classNo=map.get("classNo");
+				 studentId=map.get("studentId");
+				 hql.append("from ScoreForm sco,CourseForm cou,TestFrom tes,ClassFrom cla,StudentForm stu " +
+							"where cou.courseId=tes.courseId and sco.testId=tes.id and sco.scoreCls=cla.classNo " +
+							"and cla.classNo=stu.studentCla");
+				 if (!"0".equals(courseId)) {
+					hql.append(" and cou.courseId="+courseId);
+				}
+				 if (!"0".equals(testId)) {
+					hql.append(" and sco.testId="+testId);
+				}
+				 if (!"0".equals(classNo)) {
+					hql.append(" and cla.classNo="+classNo);
+				}
+				 if (!"0".equals(studentId)) {
+					hql.append(" and stu.studentId="+studentId);
+				}
+			}else{
+				hql.append("from ScoreForm sco,CourseForm cou,TestFrom tes,ClassFrom cla,StudentForm stu " +
+						"where cou.courseId=tes.courseId and sco.testId=tes.id and sco.scoreCls=cla.classNo " +
+						"and cla.classNo=stu.studentCla ");
+			}
+			 
+			 
+		}else{
+			hql.append("from ScoreForm sco,CourseForm cou,TestFrom tes,ClassFrom cla,StudentForm stu " +
+					"where cou.courseId=tes.courseId and sco.testId=tes.id and sco.scoreCls=cla.classNo " +
+					"and cla.classNo=stu.studentCla ");
+		}
 		
+		
+		List list=baseService.findByHql(hql.toString());
+		w.write(JsonTools.createJsonString(list));
 	}
 	
 	public void saveScore(){
 		ScoreForm s=gson.fromJson(scoreGson, ScoreForm.class);
-		baseService.save(s);
-		w.write("1");
+		if (checkScore(s)) {
+			w.write("0");
+		}else{
+			baseService.save(s);
+			w.write("1");
+		}
+		
+	}
+	
+	public boolean checkScore(ScoreForm s){
+		String hql="from ScoreForm where studentNo="+s.getStudentNo()+" and testId="+s.getTestId();
+		List l=baseService.findByHql(hql);
+		if (l!=null&&l.size()!=0) {
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	
